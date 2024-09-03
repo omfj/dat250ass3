@@ -41,6 +41,10 @@ class KeyValueStorage<T>(namespace: String, private val valueType: Class<T>) {
         return map.values.toList()
     }
 
+    fun clear() {
+        file.writeText("{}")
+    }
+
     private fun readMapFromFile(): MutableMap<String, T> {
         if (file.length() == 0L) {
             return mutableMapOf()
