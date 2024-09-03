@@ -16,10 +16,18 @@ jobs:
       - name: 🔍 Check out the code
         uses: actions/checkout@v4
 
-      - name: 📦 Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
+      - name: ☕ Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: temurin
 
-      - name: 🚀 Build with Gradle
+      - name: 🐘 Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: 8.10
+
+      - name: 🚀🚀 Build with Gradle
         run: ./gradlew build
 
       - name: ✅ Check with ktlint
