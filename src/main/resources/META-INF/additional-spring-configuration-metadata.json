@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "storage.polls.namespace",
+      "type": "java.lang.String",
+      "description": "Description for storage.polls.namespace."
+    },
+    {
+      "name": "storage.users.namespace",
+      "type": "java.lang.String",
+      "description": "Description for storage.users.namespace."
+    }
+  ] }

@@ -1,0 +1,29 @@
+name: ⚙️ CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  ci:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: 🔍 Check out the code
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: 🚀 Build with Gradle
+        run: ./gradlew build
+
+      - name: ✅ Check with ktlint
+        run: ./gradlew ktlintCheck
+
+      - name: 🧪 Test with Gradle
+        run: ./gradlew test
