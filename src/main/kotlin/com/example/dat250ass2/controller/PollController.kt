@@ -36,6 +36,11 @@ class PollController(
         @RequestBody poll: AddPollInput,
     ): Poll {
         val pollToInsert = poll.toPoll()
+
+        if (pollToInsert.expiresAt <= UnixTime.now()) {
+            throw PollExpiredException()
+        }
+
         pollService.addPoll(pollToInsert)
         return pollToInsert
     }
@@ -44,7 +49,7 @@ class PollController(
     fun getPoll(
         @PathVariable id: String,
     ): Poll {
-        return pollService.getPoll(id)
+        return pollService.getPoll(id, true)
     }
 
     @DeleteMapping("/{id}")

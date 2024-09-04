@@ -16,7 +16,9 @@ class PollService(
     }
 
     fun getPolls(): List<Poll> {
-        return pollStorage.list()
+        return pollStorage.list().filter {
+            it.expiresAt > UnixTime.now()
+        }
     }
 
     fun getPoll(
@@ -40,7 +42,10 @@ class PollService(
         userId: String,
     ) {
         val poll = getPoll(pollId)
-        val updatedVotes = poll.votes.toMutableList()
+        val updatedVotes =
+            poll.votes.filter {
+                it.userId != userId
+            }.toMutableList()
         updatedVotes.add(Vote(optionId, userId))
         val updatedPoll = poll.copy(votes = updatedVotes)
         addPoll(updatedPoll)

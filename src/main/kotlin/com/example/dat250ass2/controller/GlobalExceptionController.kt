@@ -5,6 +5,7 @@ import com.example.dat250ass2.exception.PollNotFoundException
 import com.example.dat250ass2.exception.PollVoteOptionNotFoundException
 import com.example.dat250ass2.model.output.ErrorResponse
 import org.springframework.http.HttpStatus
+import org.springframework.http.converter.HttpMessageNotReadableException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestControllerAdvice
@@ -33,5 +34,11 @@ class GlobalExceptionController {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     fun handleException(): ErrorResponse {
         return ErrorResponse("Unknown error occurred")
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException::class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    fun handleHttpMessageNotReadableException(): ErrorResponse {
+        return ErrorResponse("Invalid request body")
     }
 }
