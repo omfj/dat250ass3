@@ -27,7 +27,7 @@ jobs:
         with:
           gradle-version: 8.10
 
-      - name: 🚀🚀 Build with Gradle
+      - name: 🚀 Build with Gradle
         run: ./gradlew build
 
       - name: ✅ Check with ktlint
