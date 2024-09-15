@@ -9,5 +9,15 @@
       "name": "storage.users.namespace",
       "type": "java.lang.String",
       "description": "Description for storage.users.namespace."
+    },
+    {
+      "name": "session.header.name",
+      "type": "java.lang.String",
+      "description": "Description for session.header.name."
+    },
+    {
+      "name": "storage.sessions.namespace",
+      "type": "java.lang.String",
+      "description": "Description for storage.sessions.namespace."
     }
   ] }

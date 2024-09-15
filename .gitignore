@@ -46,3 +46,6 @@ polls_test.json
 users.json
 users_test.json
 
+sessions.json
+sessions_test.json
+
